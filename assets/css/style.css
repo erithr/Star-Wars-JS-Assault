@@ -1,0 +1,19 @@
+body {
+}
+
+h1, h2 {
+    color: red;
+}
+
+body{
+    background-image: url("../images/characters.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+    border-image: 50%;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+}
