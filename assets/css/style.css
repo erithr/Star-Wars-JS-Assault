@@ -1,8 +1,14 @@
 body {
+    background-color: black;
 }
 
 h1, h2 {
     color: red;
+}
+
+p{
+    color: red;
+    font-size: 2rem;
 }
 
 body{

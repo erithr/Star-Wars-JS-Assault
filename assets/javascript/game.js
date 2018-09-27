@@ -1,8 +1,10 @@
+
+// my variables set as objects
 var luke =
 {
     name: "Luke",
     hitPoints: 100,
-    attackPower: 100,
+    attackPower: 10,
     counterAttackPower: 10,
     playerIMG: 'assets/images/luke.jpg',
     chosen: false,
@@ -12,7 +14,7 @@ var bane =
 {
     name: "Bane",
     hitPoints: 80,
-    attackPower: 150,
+    attackPower: 10,
     counterAttackPower: 10,
     playerIMG: 'assets/images/bane.jpg',
     chosen: false,
@@ -22,7 +24,7 @@ var revan =
 {
     name: "Revan",
     hitPoints: 130,
-    attackPower: 100,
+    attackPower: 10,
     counterAttackPower: 10,
     playerIMG: 'assets/images/revan.jpg',
     chosen: false,
@@ -32,7 +34,7 @@ var vader =
 {
     name: "Vader",
     hitPoints: 200,
-    attackPower: 40,
+    attackPower: 10,
     counterAttackPower: 10,
     playerIMG: 'assets/images/vader.jpeg',
     chosen: false,
@@ -45,19 +47,20 @@ var isEnemyChosen = false;
 var character = "";
 var opponent = "";
 var jediChosen = "";
-var roundsWon = 0;
+
 
 function characterArray() {
 
-    $("#character-row").append(`<button id="Luke" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Luke"><h3>${luke.name}</h3><a href=""><img src= ${luke.playerIMG}></a><h5 id=health>${luke.hitPoints}</h5></button>`);
-    $("#character-row").append(`<button id="Bane" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Bane"><h3>${bane.name}</h3><a href=""><img src=${bane.playerIMG}></a><h5 id=health>${bane.hitPoints}</h5></button>`);
-    $("#character-row").append(`<button id="Vader" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Vader"><h3>${vader.name}</h3><a href=""><img src=${vader.playerIMG}></a><h5 id=health>${vader.hitPoints}</h5></button>`);
-    $("#character-row").append(`<button id="Revan" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Revan"><h3>${revan.name}</h3><a href=""><img src=${revan.playerIMG}></a><h5 id=health>${revan.hitPoints}</h5></button>`);
+    $("#character-row").append(`<button id="Luke" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Luke"><h3>${luke.name}</h3><a href=""><img src= ${luke.playerIMG}></a><h6 id=luke-health>${luke.hitPoints}</h6></button>`);
+    $("#character-row").append(`<button id="Bane" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Bane"><h3>${bane.name}</h3><a href=""><img src=${bane.playerIMG}></a><h6 id=bane-health>${bane.hitPoints}</h6></button>`);
+    $("#character-row").append(`<button id="Vader" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Vader"><h3>${vader.name}</h3><a href=""><img src=${vader.playerIMG}></a><h6 id=vader-health>${vader.hitPoints}</h6></button>`);
+    $("#character-row").append(`<button id="Revan" type="button" class="btn btn-outline-success btn-primary btn-lg Character" value="Revan"><h3>${revan.name}</h3><a href=""><img src=${revan.playerIMG}></a><h6 id=revan-health>${revan.hitPoints}</h6></button>`);
 
 
 }
 
 //i tried doing an array at first but i ended up never being able to reference my array so i dropped it in favor of just simple object manipultion using functions
+// left it here so you could see what i had so you could see what i had in mind but ultimate dropped since i was not able to figure it out. 
 //Populate Players
 // for (var i = 0; i < characterArray.length; i++) {
 
@@ -149,6 +152,7 @@ function enemySelect() {
     isEnemyChosen = true;
     if (jediChosen === "Luke") {
         opponent = luke;
+
         $("#Luke").addClass("bad");
         $("#Luke").appendTo("#deffend");
     }
@@ -164,27 +168,37 @@ function enemySelect() {
     }
     else if (jediChosen === "Revan") {
         opponent = revan;
-        $("h5").addClass("bad");
+        $("#Revan").addClass("bad");
 
         $("#Revan").appendTo("#deffend");
     }
 }
 function attack() {
-    opponent.hitPoints -= 20;
-    healthRef = opponent.hitPoints;
-    var health = ("" + opponent) + "-health"
-    console.log(health);
-    // $("" + opponent + "-health").text(opponent.hitPoints);
-
-    console.log(healthRef);
-    // healthRef -= 20;
-    $(".bad").text(healthRef);
-    console.log(healthRef);
-
+    opponent.hitPoints -= character.attackPower;
+    character.hitPoints -= opponent.counterAttackPower;
+    character.attackPower += 10;
+    console.log(opponent.hitPoints);
+    $("#results").html(`<p>You attacked ${opponent.name} for ${character.attackPower}</p><p>${opponent.name} attacked you back for ${opponent.counterAttackPower}`);
+    updateWindowText();
+    checkHealth();
 
 }
-function damage() {
 
+function updateWindowText() {
+    $("#attack-results").html(`<p>You attacked ${opponent.name} for ${character.attackPower}</p><p>${opponent.name} attacked you back for ${opponent.counterAttackPower}`);
+    //Updates all the health of all the characters
+    $("#revan-health").html(revan.hitPoints);
+    $("#luke-health").html(luke.hitPoints);
+    $("#bane-health").html(bane.hitPoints);
+    $("#vader-health").html(vader.hitPoints);
+}
+
+// this function is to check the health of the player and the enemy and either end the game or delete the enemy and allow the user to select a new enemy 
+function checkHealth() {
+    if (opponent.hitPoints < 0) {
+        opponent.empty();
+    }
+    console.log(opponent);
 
 }
 $("#attack").on("click", function () {
@@ -198,7 +212,8 @@ $("#attack").on("click", function () {
         alert("Select Enemy");
     }
 })
-    //reset state or clean state 
+    //reset state or clean state
+    //need to make a reset option for when the game ends
 
 
 
