@@ -3,9 +3,9 @@ $(document).ready(function () {
     var luke =
     {
         name: "Luke",
-        hitPoints: 100,
-        attackPower: 10,
-        counterAttackPower: 10,
+        hitPoints: 150,
+        attackPower: 20,
+        counterAttackPower: 15,
         playerIMG: 'assets/images/luke.jpg',
         chosen: false,
         opponent: false
@@ -13,9 +13,9 @@ $(document).ready(function () {
     var bane =
     {
         name: "Bane",
-        hitPoints: 80,
-        attackPower: 10,
-        counterAttackPower: 10,
+        hitPoints: 140,
+        attackPower: 50,
+        counterAttackPower: 30,
         playerIMG: 'assets/images/bane.jpg',
         chosen: false,
         opponent: false
@@ -23,9 +23,9 @@ $(document).ready(function () {
     var revan =
     {
         name: "Revan",
-        hitPoints: 130,
-        attackPower: 10,
-        counterAttackPower: 10,
+        hitPoints: 100,
+        attackPower: 30,
+        counterAttackPower: 40,
         playerIMG: 'assets/images/revan.jpg',
         chosen: false,
         opponent: false
@@ -34,7 +34,7 @@ $(document).ready(function () {
     {
         name: "Vader",
         hitPoints: 200,
-        attackPower: 10,
+        attackPower: 30,
         counterAttackPower: 10,
         playerIMG: 'assets/images/vader.jpeg',
         chosen: false,
@@ -202,17 +202,20 @@ $(document).ready(function () {
             $("#deffend").empty();
             enemyDefeated++;
             checkWin();
-
+        }
+        if (character.hitPoints < 0) {
+            alert("You Lose. The Force was not with you. Click OK to try again.");
+            window.location.reload(true);
         }
         console.log(opponent);
 
-        function checkWin() {
-            if (enemyDefeated === 3) {
-                console.log("it worked");
-                alert("You WIN!! Click OK to play again.");
-                window.location.reload(true);
-            }
 
+    }
+    function checkWin() {
+        if (enemyDefeated === 3) {
+            console.log("it worked");
+            alert("You WIN!! Click OK to play again.");
+            window.location.reload(true);
         }
 
     }
