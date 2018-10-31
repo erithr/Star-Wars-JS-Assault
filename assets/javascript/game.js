@@ -47,6 +47,7 @@ $(document).ready(function () {
     var character = "";
     var opponent = "";
     var jediChosen = "";
+    var enemyDefeated = 0;
 
 
     function characterArray() {
@@ -196,9 +197,23 @@ $(document).ready(function () {
     // this function is to check the health of the player and the enemy and either end the game or delete the enemy and allow the user to select a new enemy 
     function checkHealth() {
         if (opponent.hitPoints < 0) {
-            opponent.empty();
+            $("#attack-results").html(`<p>You Defeated ${opponent.name}!`);
+            isEnemyChosen = false;
+            $("#deffend").empty();
+            enemyDefeated++;
+            checkWin();
+
         }
         console.log(opponent);
+
+        function checkWin() {
+            if (enemyDefeated === 3) {
+                console.log("it worked");
+                alert("You WIN!! Click OK to play again.");
+                window.location.reload(true);
+            }
+
+        }
 
     }
     $("#attack").on("click", function () {
