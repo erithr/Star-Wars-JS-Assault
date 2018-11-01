@@ -1,4 +1,4 @@
-# unit-4-game: Jedi Game
+# Star-Wars-JS-Assault
 This Project is a fun little game showing object manipulation and stat tracking
 
 
