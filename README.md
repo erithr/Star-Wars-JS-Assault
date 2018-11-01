@@ -15,6 +15,8 @@ Once the enemy is in the deffender row the attack button will do two thing, firs
 
 Curently the game is missing a function to check the health totals of characters so if a player or enemy goes below 0 health nothing happens as of yet. Missing a way to end the game cause of this since the combat currently goes on indefinitely.
 
+### Link To Game Here
+https://erithr.github.io/Star-Wars-JS-Assault/
 
 ### Project by:
 Hugo Villalobos
