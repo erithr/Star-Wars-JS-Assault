@@ -60,44 +60,6 @@ $(document).ready(function () {
 
     }
 
-    //i tried doing an array at first but i ended up never being able to reference my array so i dropped it in favor of just simple object manipultion using functions
-    // left it here so you could see what i had so you could see what i had in mind but ultimate dropped since i was not able to figure it out. 
-    //Populate Players
-    // for (var i = 0; i < characterArray.length; i++) {
-
-    //     var counterAttackRef = characterArray[i].counterAttackPower;// tracks attack power for selected character 
-    //     var characterRef = "character" + (i); //establish which player
-    //     var healthRef = characterArray[i].hitPoints;// track health 
-
-    //     var characterWrapper = $("<button>"); //establish wrapper div
-    //     characterWrapper.addClass("player-wrapper");
-    //     characterWrapper.addClass("btn btn-outline-success btn-primary btn-lg")
-    //     characterWrapper.addClass("Ready-" + characterRef);
-    //     characterWrapper.attr("player-ref", characterRef);
-    //     characterWrapper.attr("id", characterArray[i].name);
-    //     characterWrapper.attr("health", characterArray[i].hitPoints);
-    //     characterWrapper.addClass(characterRef);
-
-    //     var playerName = $("<div>");
-    //     playerName.addClass("player-name");
-    //     playerName.append("<p3 class='name-tag'>" + characterArray[i].name + "</p3>");
-    //     characterWrapper.append(playerName);
-
-    //     var character = $("<img>");
-    //     character.addClass("player-image");
-    //     character.addClass(characterRef);
-
-    //     character.attr("src", characterArray[i].playerIMG);
-    //     characterWrapper.append(character);
-
-    //     var playerHP = $("<div>");
-    //     playerHP.addClass("player-HP");
-    //     playerHP.addClass(healthRef);
-    //     playerHP.text(characterArray[i].hitPoints);
-    //     characterWrapper.append(playerHP);
-
-    //     $("#character-row").append(characterWrapper);
-
     //End Players
     characterArray();
     //select
